@@ -55,7 +55,7 @@ afficherPointeSapin(4);
 // Etape 2 : Sapin à étages
 
 // Etape 2.1: Afficher une étage
-/*
+
 function afficherEtage(hauteur, pointe_offset) {
     let mesure = hauteur + pointe_offset;
     for (let i = pointe_offset; i < mesure; i++) {
@@ -67,7 +67,7 @@ function afficherEtage(hauteur, pointe_offset) {
 
 afficherEtage(3, 0);
 afficherEtage(3, 1);
-afficherEtage(3, 2);*/
+afficherEtage(3, 2);
 
 //Etape 2.2: Aligner les étages
 
@@ -87,7 +87,6 @@ afficherEtage1(3, 3, 0);
 
 //Etape 2.3: Factorisation
 
-// Fonction AfficheEtage sans le +
 function afficherEtage1(hauteur, pointe_offset, espacement) {
     let mesure = hauteur + pointe_offset;
     for (let i = pointe_offset; i < mesure; i++) {
@@ -97,33 +96,27 @@ function afficherEtage1(hauteur, pointe_offset, espacement) {
     }
 }
 
-// Fonction AfficheEtage avec le +
-function afficherEtage2(hauteur, pointe_offset) {
-    console.log(" ".repeat(hauteur + pointe_offset + 2) + "+");
-
-    afficherEtage1(3, 0, 3);
-    afficherEtage1(3, 1, 2);
-    afficherEtage1(3, 2, 1);
-    afficherEtage1(3, 3, 0);
-    /*
-    // Afficher le tronc
-    let tronc = " ".repeat(hauteur + 1) + "###";
-    for (let i = 0; i < 3; i++) {
-        console.log(tronc);
-    }
-     */
+// Fonction AfficheEtage sans le +
+function afficherEtage2(hauteur, pointe_offset, espacement) {
+    afficherEtage1(hauteur, pointe_offset, espacement);
 }
-/*
-afficherEtage2(3, 0, 3);
-afficherEtage2(3, 1, 2);
-afficherEtage2(3, 2, 1);
-afficherEtage2(3, 3, 0);
-*/
+
+// Afficher le + une seule fois au début
+function afficherStructure() {
+    console.log(" ".repeat(6) + "+");
+    afficherEtage2(3, 0, 3);
+    afficherEtage2(3, 1, 2);
+    afficherEtage2(3, 2, 1);
+    afficherEtage2(3, 3, 0);
+}
+
+afficherStructure();
+
 function afficherSapin(etages, hauteur_etage) {
     for (let etage = 0; etage < etages; etage++) {
         let pointe_offset = etage === 0 ? 0 : 1;
         let espacement = etages - etage - 1;
-        afficherEtage2(hauteur_etage, pointe_offset, espacement);
+        afficherStructure(hauteur_etage, pointe_offset, espacement);
     }
     // Afficher le tronc
     let tronc = " ".repeat(etages + 1) + "###";
